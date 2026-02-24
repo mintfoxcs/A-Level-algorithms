@@ -39,24 +39,25 @@ def linear_search(list):
     else:
         print("Not in the list lock in BOT")
 
-def bubble_sort(list2):
-    n = len(list2)
+def bubble_sort(list):
+    n = len(list)
     swapped = True
     while n > 0 and swapped:
         swapped = False
         n = n - 1
         for index in range(0,n):
-            if list2[index] > list2[index + 1]:
-                temp = list2[index]
-                list2[index] = list2[index + 1]
-                list2[index + 1] = temp
+            if list[index] > list[index + 1]:
+                temp = list[index]
+                list[index] = list[index + 1]
+                list[index + 1] = temp
                 swapped = True
-    print(list2)
+    print(list)
 
 choice = int(input("1: Binary Search || 2: Linear Search || 3: Bubble Sort\n"))
-if choice == 1:
-    binary_search(list)
-if choice == 2:
-    linear_search(list)
-if choice == 3:
-    bubble_sort(list2)
+match choice:
+    case 1:
+        binary_search(list)
+    case 2:
+        linear_search(list)
+    case 3:
+        bubble_sort(list2)
