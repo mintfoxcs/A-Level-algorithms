@@ -53,7 +53,48 @@ def bubble_sort(list):
                 swapped = True
     print(list)
 
-choice = int(input("1: Binary Search || 2: Linear Search || 3: Bubble Sort\n"))
+def insertion_sort(list):
+    n = len(list)
+    for index in range (1,n):
+        current = list[index]
+        index2 = index
+        while index2 > 0 and list[index2 - 1] > current:
+            print(list)
+            list[index2] = list[index2 - 1]
+            index2 -= 1
+        list[index2] = current
+    print(list)
+
+def merge_sort(list):
+    if len(list) > 1:
+        mid = len(list) // 2
+        lefthalf = list[:mid]
+
+        righthalf = list[mid:]
+
+        merge_sort(lefthalf)
+        merge_sort(righthalf)
+
+        i,j,k = 0
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] < righthalf[j]:
+                list[k] = lefthalf[i]
+                i += 1
+            else:
+                list[k] = righthalf[j]
+                j += 1
+            k += 1
+        while i < len(lefthalf):
+            list[k] = lefthalf[i]
+            i += 1
+            k += 1
+        while j < len(righthalf):
+            list[k] = righthalf[j]
+            j += 1
+            k += 1
+
+
+choice = int(input("1: Binary Search || 2: Linear Search || 3: Bubble Sort || 4: Insertion Sort || 5: Merge Sort\n"))
 match choice:
     case 1:
         binary_search(list)
@@ -61,3 +102,11 @@ match choice:
         linear_search(list)
     case 3:
         bubble_sort(list2)
+    case 4:
+        insertion_sort(list2)
+    case 5:
+        merge_sort(list2)
+        print(list2)
+    case _:
+        print("WRONG, please try again:")
+
