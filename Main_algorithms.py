@@ -75,7 +75,7 @@ def merge_sort(list):
         merge_sort(lefthalf)
         merge_sort(righthalf)
 
-        i,j,k = 0
+        i,j,k = 0,0,0
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] < righthalf[j]:
                 list[k] = lefthalf[i]
@@ -109,4 +109,5 @@ match choice:
         print(list2)
     case _:
         print("WRONG, please try again:")
+
 
