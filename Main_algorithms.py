@@ -114,8 +114,36 @@ def quick_sort(items):
     right = quick_sort(items[pointer1 + 1:len(items)])
     return left + [items[pointer1]] + right
 
+def partition(items,start,end):
+    pivot = items[start]
+    leftmark = start + 1
+    rightmark = end
+    done = False
+    while not done:
+        while leftmark <= rightmark and items[leftmark] <= pivot:
+            leftmark += 1
+        while items[rightmark] >= pivot and rightmark >= leftmark:
+            rightmark -= 1
+        if rightmark < leftmark:
+            done = True
+        else:
+            temp = items[leftmark]
+            items[leftmark] = items[rightmark]
+            items[rightmark] = temp
+    temp = items[start]
+    items[start] = items[rightmark]
+    items[rightmark] = temp
+    return rightmark
 
-choice = int(input("1: Binary Search || 2: Linear Search || 3: Bubble Sort || 4: Insertion Sort || 5: Merge Sort || 6: Quick Sort\n"))
+def quick_sort2(items,start,end):
+    if start < end:
+        split = partition(items,start,end)
+        quick_sort2(items,start,split - 1)
+        quick_sort2(items, split + 1, end)
+    return items
+
+
+choice = int(input("1: Binary Search || 2: Linear Search || 3: Bubble Sort || 4: Insertion Sort || 5: Merge Sort || 6: Quick Sort || 7: Quick Sort v2\n"))
 match choice:
     case 1:
         binary_search(items)
@@ -130,5 +158,7 @@ match choice:
         print(items2)
     case 6:
         print(quick_sort(items2))
+    case 7:
+        print(quick_sort2(items2,0,len(items2) - 1))
     case _:
         print("WRONG, please try again:")
